@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+      <div class="col-4">
+          <div class="card">
+            <!-- omdat de REST API niet bruikbaar was kon ik de if statement niet maken.-->
+            <div *ngIf="true; then correct; else false">
+              <!--Card image-->
+            </div>
+            <ng-template #correct>
+                <img class="img-fluid" src="{{getImage()}}" alt="quote foto">
+            </ng-template> 
+            <ng-template #false>
+                <img class="img-fluid" src="https://schools.prairiesouth.ca/peacock/wp-content/uploads/sites/21/2017/01/final-exams.png" alt="default foto">
+            </ng-template>  
+
+            <!--Card content-->
+            <div class="card-body">
+              <!--Title-->
+              <h4 class="card-title">{{getTitle()}}</h4>
+              <!--Text-->
+              <p class="card-text">{{getQuote()}}</p>
+            </div>
+                
+          </div>
+      </div>
+
+  </div>
+</div>
