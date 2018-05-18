@@ -16,7 +16,7 @@ import { RouterModule } from "@angular/router";
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-import { QodService } from './service/qod.service'
+import { PokeAPIService } from './service/PokeAPI.service'
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { QodService } from './service/qod.service'
   providers: [
     HttpClient,
     SpaceStationService,
-    QodService
+    PokeAPIService
   ],
   bootstrap: [AppComponent]
 })

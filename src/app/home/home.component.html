@@ -1,28 +1,23 @@
 <div class="container">
-  <div class="row">
-      <div class="col-4">
-          <div class="card">
-            <!-- omdat de REST API niet bruikbaar was kon ik de if statement niet maken.-->
-            <div *ngIf="true; then correct; else false">
-              <!--Card image-->
-            </div>
-            <ng-template #correct>
-                <img class="img-fluid" src="{{getImage()}}" alt="quote foto">
-            </ng-template> 
-            <ng-template #false>
-                <img class="img-fluid" src="https://schools.prairiesouth.ca/peacock/wp-content/uploads/sites/21/2017/01/final-exams.png" alt="default foto">
-            </ng-template>  
-
+  <div class="row" *ngIf="ServiceOutput">
+    <div class="col-12"> 
+      <button type="button" [ngClass]="{'btn' : true, 'btn-primary': ServiceOutput.previous, 'btn-disabled': !ServiceOutput.previous }" (click)="Previous($event)">Previous</button>  
+      <button type="button" [ngClass]="{'btn' : true, 'btn-primary': ServiceOutput.next, 'btn-disabled': !ServiceOutput.next }" (click)="Next($event)">Next</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="ServiceOutput">
+      <div class="col-4" *ngFor="let pokemon of ServiceOutput.results; let i = index" >
+          <div class="card" >
             <!--Card content-->
-            <div class="card-body">
+            <div class="card-body" >
               <!--Title-->
-              <h4 class="card-title">{{getTitle()}}</h4>
+              <h4 class="card-title">{{Pokemons[i]?.name == pokemon.name ? Pokemons[i].name : placeholder}}</h4>
               <!--Text-->
-              <p class="card-text">{{getQuote()}}</p>
+              <p class="card-text">{{Pokemons[i]?.name == pokemon.name ? Pokemons[i].name : placeholder}}</p>
             </div>
                 
           </div>
       </div>
 
   </div>
-</div>
+</div>6
