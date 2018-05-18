@@ -13,11 +13,11 @@
               <!--Title-->
               <h4 class="card-title">{{Pokemons[i]?.name == pokemon.name ? Pokemons[i].name : placeholder}}</h4>
               <!--Text-->
-              <p class="card-text">{{Pokemons[i]?.name == pokemon.name ? Pokemons[i].name : placeholder}}</p>
+              <p class="card-text" *ngIf="Pokemons[i]?.name == pokemon.name" > Pokédexnummer: {{Pokemons[i].id}} </p>
             </div>
                 
           </div>
       </div>
 
   </div>
-</div>6
+</div>

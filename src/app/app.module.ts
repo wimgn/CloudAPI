@@ -5,10 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { DetailComponent } from './pokemonDetail/detail.component';
 
 import { IssMapComponent } from './iss-map/iss-map.component';
 import { AgmCoreModule } from '@agm/core';
 import { SpaceStationService } from './service/space-station.service';
+import { PokeAPIService } from './service/PokeAPI.service';
 
 import { FormsModule } from '@angular/forms';
 
@@ -16,7 +18,7 @@ import { RouterModule } from "@angular/router";
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-import { PokeAPIService } from './service/PokeAPI.service'
+
 
 @NgModule({
   declarations: [
@@ -25,13 +27,14 @@ import { PokeAPIService } from './service/PokeAPI.service'
     IssMapComponent,
     NavBarComponent,
     PageNotFoundComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent},
-      { path: 'space', component: IssMapComponent},
+      { path: 'pokemon/:id', component: DetailComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: "**", component: PageNotFoundComponent}
     ], { useHash: true }),

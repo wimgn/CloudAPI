@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row" *ngIf="ServiceOutput">
+      <!-- <div class="col-12"> 
+        <button type="button" [ngClass]="{'btn' : true, 'btn-primary': ServiceOutput.previous, 'btn-disabled': !ServiceOutput.previous }" (click)="Previous($event)">Previous</button>  
+        <button type="button" [ngClass]="{'btn' : true, 'btn-primary': ServiceOutput.next, 'btn-disabled': !ServiceOutput.next }" (click)="Next($event)">Next</button>
+      </div> -->
+    </div>
+    <div class="row" *ngIf="ServiceOutput">
+        <div class="col-4" >
+            <div class="card" >
+              <!--Card content-->
+              <div class="card-body" >
+                <!--Title-->
+                <h4 class="card-title">{{ServiceOutput.name}}</h4>
+                <!--Text-->
+                <p class="card-text" > Pokédexnummer: {{ServiceOutput.id}} </p>
+              </div>
+                  
+            </div>
+            <div class="card" >
+                <!--Card content-->
+                <div class="card-body" >
+                  <!--Title-->
+                  <h4 class="card-title">Stats</h4>
+                  <!--Text-->
+                  <p class="card-text" *ngFor="let stat of ServiceOutput.stats"> {{stat.stat.name}}: {{stat.base_stat}}  </p>
+                </div>
+                    
+              </div>
+        </div>
+  
+    </div>
+  </div>
