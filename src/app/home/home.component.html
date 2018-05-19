@@ -7,13 +7,15 @@
   </div>
   <div class="row" *ngIf="ServiceOutput">
       <div class="col-4" *ngFor="let pokemon of ServiceOutput.results; let i = index" >
-          <div class="card" >
+        <div class="card" >
             <!--Card content-->
             <div class="card-body" >
               <!--Title-->
-              <h4 class="card-title">{{Pokemons[i]?.name == pokemon.name ? Pokemons[i].name : placeholder}}</h4>
-              <!--Text-->
-              <p class="card-text" *ngIf="Pokemons[i]?.name == pokemon.name" > Pokédexnummer: {{Pokemons[i].id}} </p>
+              <h4 class="card-title">{{pokemon.name}}</h4>
+              <a *ngIf="Pokemons[i]?.name == pokemon.name" [routerLink]="['/pokemon', Pokemons[i].id]">
+                <!--Text-->
+                <p class="card-text" *ngIf="Pokemons[i]?.name == pokemon.name" > Pokédexnummer: {{Pokemons[i].id}} </p>
+              </a>
             </div>
                 
           </div>

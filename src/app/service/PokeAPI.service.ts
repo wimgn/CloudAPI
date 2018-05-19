@@ -20,7 +20,10 @@ export class PokeAPIService {
     {
         return this._http.get<IPokemon>(url);
     }
-
+    GetType(url : string)
+    {
+        return this._http.get<IType>(url);
+    }
 
 }
 
@@ -131,4 +134,72 @@ export interface IPokemon {
     species: Species;
     stats: Stat[];
     types: Type[];
+}
+
+export interface NoDamageTo {
+    name: string;
+    url: string;
+}
+
+export interface HalfDamageTo {
+    name: string;
+    url: string;
+}
+
+export interface DoubleDamageTo {
+    name: string;
+    url: string;
+}
+
+export interface NoDamageFrom {
+    name: string;
+    url: string;
+}
+
+export interface HalfDamageFrom {
+    name: string;
+    url: string;
+}
+
+export interface DoubleDamageFrom {
+    name: string;
+    url: string;
+}
+
+export interface DamageRelations {
+    no_damage_to: NoDamageTo[];
+    half_damage_to: HalfDamageTo[];
+    double_damage_to: DoubleDamageTo[];
+    no_damage_from: NoDamageFrom[];
+    half_damage_from: HalfDamageFrom[];
+    double_damage_from: DoubleDamageFrom[];
+}
+
+export interface Generation {
+    name: string;
+    url: string;
+}
+
+export interface GameIndice {
+    game_index: number;
+    generation: Generation;
+}
+
+export interface Generation2 {
+    name: string;
+    url: string;
+}
+
+export interface MoveDamageClass {
+    name: string;
+    url: string;
+}
+
+export interface IType {
+    id: number;
+    name: string;
+    damage_relations: DamageRelations;
+    game_indices: GameIndice[];
+    generation: Generation2;
+    move_damage_class: MoveDamageClass;
 }

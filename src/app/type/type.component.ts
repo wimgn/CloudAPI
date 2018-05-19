@@ -5,20 +5,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { resetFakeAsyncZone } from '@angular/core/testing';
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  selector: 'app-type',
+  templateUrl: './type.component.html',
+  styleUrls: ['./type.component.scss']
 })
-export class DetailComponent implements OnInit {
+export class TypeComponent implements OnInit {
   constructor(private _svc : PokeAPI.PokeAPIService, private route: ActivatedRoute, private router : Router) {
   }
 
-  ServiceOutput : PokeAPI.IPokemon
-
-  limit = 20;
-  offset = 0;
-  count = 0;
-  placeholder = "";
+  ServiceOutput : PokeAPI.IType
 
   id: number;
   private sub: any;
