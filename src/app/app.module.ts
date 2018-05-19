@@ -6,10 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './pokemonDetail/detail.component';
+import { TypeComponent } from './type/type.component';
 
-import { IssMapComponent } from './iss-map/iss-map.component';
-import { AgmCoreModule } from '@agm/core';
-import { SpaceStationService } from './service/space-station.service';
 import { PokeAPIService } from './service/PokeAPI.service';
 
 import { FormsModule } from '@angular/forms';
@@ -24,10 +22,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   declarations: [
     AppComponent,
     HomeComponent,
-    IssMapComponent,
     NavBarComponent,
     PageNotFoundComponent,
-    DetailComponent
+    DetailComponent,
+    TypeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,20 +33,16 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent},
       { path: 'pokemon/:id', component: DetailComponent},
+      { path: 'type/:id', component: TypeComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: "**", component: PageNotFoundComponent}
     ], { useHash: true }),
     HttpClientModule,
-    FormsModule,
-    // Deze key is nodig voor de kaart !
-    AgmCoreModule.forRoot({ 
-      apiKey: 'AIzaSyAg3VsKAoL3f5I4T052D7jNr7NxzyDCXQo'
-    })
+    FormsModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
     HttpClient,
-    SpaceStationService,
     PokeAPIService
   ],
   bootstrap: [AppComponent]

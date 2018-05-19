@@ -28,17 +28,19 @@ export class DetailComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
 
-      // In a real app: dispatch action to load the details here.
-    });
+      let url = "https://pokeapi.co/api/v2/pokemon/" + this.id + "/";
 
-    let url = "https://pokeapi.co/api/v2/pokemon/" + this.id + "/";
-
-    this._svc.GetPokemon(url)
+      this._svc.GetPokemon(url)
             .subscribe(result => {
             this.ServiceOutput = result;
             console.log(result.name);
             });
+    });    
     
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   Type(event, url)

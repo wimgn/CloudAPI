@@ -5,6 +5,9 @@
       <button type="button" [ngClass]="{'btn' : true, 'btn-primary': ServiceOutput.next, 'btn-disabled': !ServiceOutput.next }" (click)="Next($event)">Next</button>
     </div>
   </div>
+
+  <br>
+
   <div class="row" *ngIf="ServiceOutput">
       <div class="col-4" *ngFor="let pokemon of ServiceOutput.results; let i = index" >
         <div class="card" >

@@ -6,23 +6,36 @@
               <div class="card-body" >
                 <!--Title-->
                 <h4 class="card-title">{{ServiceOutput.name}}</h4>
-                <!--Text-->
-                <p class="card-text" > Pokédexnummer: {{ServiceOutput.id}} </p>
               </div>
                   
             </div>
         </div>
     </div>
 
-        <div class="row" >
+    <br>
+
+    <div class="row" >
+            <div class="col-4" >
+              <div class="card" >
+                  <!--Card content-->
+                  <div class="card-body" >
+                    <!--Title-->
+                    <h4 class="card-title">No damage to</h4>
+                    <!--Text-->
+                    <p class="card-text" *ngFor="let type of ServiceOutput.damage_relations.no_damage_to" (click)="Type($event, type.url)"> {{type.name}}  </p>
+                  </div>
+                      
+                </div>
+            </div>
+
             <div class="col-4" >
                 <div class="card" >
                     <!--Card content-->
                     <div class="card-body" >
                       <!--Title-->
-                      <h4 class="card-title">Stats</h4>
+                      <h4 class="card-title">Double damage to</h4>
                       <!--Text-->
-                      <p class="card-text" *ngFor="let stat of ServiceOutput.stats"> {{stat.stat.name}}: {{stat.base_stat}}  </p>
+                      <p class="card-text" *ngFor="let type of ServiceOutput.damage_relations.double_damage_to" (click)="Type($event, type.url)"> {{type.name}}  </p>
                     </div>
                         
                   </div>
@@ -33,28 +46,58 @@
                     <!--Card content-->
                     <div class="card-body" >
                       <!--Title-->
-                      <h4 class="card-title">Appearance</h4>
+                      <h4 class="card-title">Half damage to</h4>
                       <!--Text-->
-                      <p class="card-text" > height: {{ServiceOutput.height/10.0}}m  </p>
-                      <p class="card-text" > height: {{ServiceOutput.height/10.0}}m  </p>
-                      <p class="card-text" > species: {{ServiceOutput.species.name}}  </p>
-                    </div>
-                        
-                  </div>
-            </div>
-
-            <div class="col-4" >
-                <div class="card" >
-                    <!--Card content-->
-                    <div class="card-body" >
-                      <!--Title-->
-                      <h4 class="card-title">Type</h4>
-                      <!--Text-->
-                      <p class="card-text" *ngFor="let type of ServiceOutput.types" (click)="Type($event, type.type.url)"> {{type.type.name}}  </p>
+                      <p class="card-text" *ngFor="let type of ServiceOutput.damage_relations.half_damage_to" (click)="Type($event, type.url)"> {{type.name}}  </p>
                     </div>
                         
                   </div>
             </div>
   
     </div>
+
+    <br>
+
+    <div class="row" >
+        <div class="col-4" >
+          <div class="card" >
+              <!--Card content-->
+              <div class="card-body" >
+                <!--Title-->
+                <h4 class="card-title">No damage from</h4>
+                <!--Text-->
+                <p class="card-text" *ngFor="let type of ServiceOutput.damage_relations.no_damage_from" (click)="Type($event, type.url)"> {{type.name}}  </p>
+              </div>
+                  
+            </div>
+        </div>
+
+        <div class="col-4" >
+            <div class="card" >
+                <!--Card content-->
+                <div class="card-body" >
+                  <!--Title-->
+                  <h4 class="card-title">Double damage from</h4>
+                  <!--Text-->
+                  <p class="card-text" *ngFor="let type of ServiceOutput.damage_relations.double_damage_from" (click)="Type($event, type.url)"> {{type.name}}  </p>
+                </div>
+                    
+              </div>
+        </div>
+
+        <div class="col-4" >
+            <div class="card" >
+                <!--Card content-->
+                <div class="card-body" >
+                  <!--Title-->
+                  <h4 class="card-title">Half damage from</h4>
+                  <!--Text-->
+                  <p class="card-text" *ngFor="let type of ServiceOutput.damage_relations.half_damage_from" (click)="Type($event, type.url)"> {{type.name}}  </p>
+                </div>
+                    
+              </div>
+        </div>
+
+    </div>
+
   </div>

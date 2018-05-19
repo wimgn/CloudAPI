@@ -10,7 +10,7 @@ import { resetFakeAsyncZone } from '@angular/core/testing';
   styleUrls: ['./type.component.scss']
 })
 export class TypeComponent implements OnInit {
-  constructor(private _svc : PokeAPI.PokeAPIService, private route: ActivatedRoute, private router : Router) {
+  constructor(private _svc : PokeAPI.PokeAPIService, private route: ActivatedRoute, private router: Router) {
   }
 
   ServiceOutput : PokeAPI.IType
@@ -23,16 +23,14 @@ export class TypeComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
 
-      // In a real app: dispatch action to load the details here.
-    });
+      let url = "https://pokeapi.co/api/v2/type/" + this.id + "/";
 
-    let url = "https://pokeapi.co/api/v2/pokemon/" + this.id + "/";
-
-    this._svc.GetPokemon(url)
-            .subscribe(result => {
-            this.ServiceOutput = result;
-            console.log(result.name);
-            });
+      this._svc.GetType(url)
+              .subscribe(result => {
+              this.ServiceOutput = result;
+              console.log(result.name);
+              });
+      });
     
   }
 
@@ -43,6 +41,10 @@ export class TypeComponent implements OnInit {
             console.log(result.id);
             this.router.navigate(['/type', result.id]);
             });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 
