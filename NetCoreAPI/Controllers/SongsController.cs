@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Model;
 
 [Route("api/v1/songs")]
+[EnableCors("AllowSpecificOrigin")]
 public class SongsController : Controller
 {
     private readonly LibraryContext context;
