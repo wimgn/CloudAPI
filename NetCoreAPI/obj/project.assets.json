@@ -12541,11 +12541,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\School\\2017-2018\\Cloud API\\LesprojectDeel2\\aspcore.csproj",
+      "projectUniqueName": "d:\\School\\2017-2018\\Cloud API\\SemesterOpdracht\\NetCoreAPI\\aspcore.csproj",
       "projectName": "aspcore",
-      "projectPath": "d:\\School\\2017-2018\\Cloud API\\LesprojectDeel2\\aspcore.csproj",
+      "projectPath": "d:\\School\\2017-2018\\Cloud API\\SemesterOpdracht\\NetCoreAPI\\aspcore.csproj",
       "packagesPath": "C:\\Users\\wimge\\.nuget\\packages\\",
-      "outputPath": "d:\\School\\2017-2018\\Cloud API\\LesprojectDeel2\\obj\\",
+      "outputPath": "d:\\School\\2017-2018\\Cloud API\\SemesterOpdracht\\NetCoreAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

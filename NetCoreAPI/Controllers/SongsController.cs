@@ -4,20 +4,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Model;
 
-[Route("api/v1/books")]
-public class BooksController2 : Controller
+[Route("api/v1/songs")]
+public class SongsController : Controller
 {
     private readonly LibraryContext context;
 
-    public BooksController2(LibraryContext context)
+    public SongsController(LibraryContext context)
     {
         this.context = context;
     }
 
-    [HttpGet]         // api/v1/books
-    public List<Book> GetAllBooks(string genre, string title, int? page, string sort, int length = 2, string dir = "asc")
+    [HttpGet]         // api/v1/songs
+    public List<Song> GetAllSongs(string genre, string title, int? page, string sort, int length = 2, string dir = "asc")
     {
-        IQueryable<Book> query = context.Books;
+        IQueryable<Song> query = context.Songs;
 
         if (!string.IsNullOrWhiteSpace(genre))
             query = query.Where(d => d.Genre == genre);
@@ -34,11 +34,11 @@ public class BooksController2 : Controller
                     else if (dir == "desc")
                         query = query.OrderByDescending(d => d.Title);
                     break;
-                case "isbn":
+                case "artist":
                     if (dir == "asc")
-                        query = query.OrderBy(d => d.ISBN);
+                        query = query.OrderBy(d => d.Artist.Name);
                     else if (dir == "desc")
-                        query = query.OrderByDescending(d => d.ISBN);
+                        query = query.OrderByDescending(d => d.Artist.Name);
                     break;
             }
         }
@@ -50,69 +50,67 @@ public class BooksController2 : Controller
         return query.ToList();
     }
 
-    [Route("{id}")]   // api/v1/books/2
+    [Route("{id}")]   // api/v1/songs/2
     [HttpGet]
-    public IActionResult GetBook(int id)
+    public IActionResult GetSong(int id)
     {
-        var book = context.Books
-                    .Include(d => d.Author)
+        var song = context.Songs
+                    .Include(d => d.Artist)
                     .SingleOrDefault(d => d.Id == id);
 
-        if (book == null)
+        if (song == null)
             return NotFound();
 
-        return Ok(book);
+        return Ok(song);
     }
 
-    [Route("{id}/author")]   // api/v1/books/2
+    [Route("{id}/artist")]   // api/v1/songs/2
     [HttpGet]
-    public IActionResult GetAuthorForBook(int id)
+    public IActionResult GetArtistForSong(int id)
     {
-        var book = context.Books
-                    .Include(d => d.Author)
+        var song = context.Songs
+                    .Include(d => d.Artist)
                     .SingleOrDefault(d => d.Id == id);
-        if (book == null)
+        if (song == null)
             return NotFound();
 
-        return Ok(book.Author);
+        return Ok(song.Artist);
     }
 
     [HttpPost]
-    public IActionResult CreateBook([FromBody] Book newBook)
+    public IActionResult CreateSong([FromBody] Song newSong)
     {
-        //Book toevoegen in de databank, Id wordt dan ook toegekend
-        context.Books.Add(newBook);
+        //song toevoegen in de databank, Id wordt dan ook toegekend
+        context.Songs.Add(newSong);
         context.SaveChanges();
         // Stuur een result 201 met het boek als content
-        return Created("", newBook);
+        return Created("", newSong);
     }
 
     [HttpPut]
-    public IActionResult UpdateBook([FromBody] Book updateBook)
+    public IActionResult UpdateSong([FromBody] Song updateSong)
     {
-        var orgBook = context.Books.Find(updateBook.Id);
-        if (orgBook == null)
+        var orgSong = context.Songs.Find(updateSong.Id);
+        if (orgSong == null)
             return NotFound();
 
-        orgBook.Title = updateBook.Title;
-        orgBook.Pages = updateBook.Pages;
-        orgBook.ISBN = updateBook.ISBN;
-        orgBook.Genre = updateBook.Genre;
+        orgSong.Title = updateSong.Title;
+        orgSong.Genre = updateSong.Genre;
 
         context.SaveChanges();
-        return Ok(orgBook);
+        return Ok(orgSong);
     }
 
     [Route("{id}")]
     [HttpDelete]
-    public IActionResult DeleteBook(int id)
+    public IActionResult DeleteSong(int id)
     {
-        var book = context.Books.Find(id);
-        if (book == null)
+        var song = context.Songs.Find(id);
+        if (song == null)
             return NotFound();
 
-        //book verwijderen ..
-        context.Books.Remove(book);
+        //song verwijderen ..
+        context.Songs.Remove(song);
         context.SaveChanges();
         //Standaard response 204 bij een gelukte delete
         return NoContent();

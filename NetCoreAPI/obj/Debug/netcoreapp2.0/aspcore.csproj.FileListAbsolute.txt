@@ -9,3 +9,14 @@ d:\School\2017-2018\Cloud API\LesprojectDeel2\obj\Debug\netcoreapp2.0\aspcore.As
 d:\School\2017-2018\Cloud API\LesprojectDeel2\obj\Debug\netcoreapp2.0\aspcore.AssemblyInfo.cs
 d:\School\2017-2018\Cloud API\LesprojectDeel2\obj\Debug\netcoreapp2.0\aspcore.dll
 d:\School\2017-2018\Cloud API\LesprojectDeel2\obj\Debug\netcoreapp2.0\aspcore.pdb
+d:\School\2017-2018\Cloud API\SemesterOpdracht\NetCoreAPI\obj\Debug\netcoreapp2.0\aspcore.csprojResolveAssemblyReference.cache
+d:\School\2017-2018\Cloud API\SemesterOpdracht\NetCoreAPI\obj\Debug\netcoreapp2.0\aspcore.csproj.CoreCompileInputs.cache
+d:\School\2017-2018\Cloud API\SemesterOpdracht\NetCoreAPI\obj\Debug\netcoreapp2.0\aspcore.AssemblyInfoInputs.cache
+d:\School\2017-2018\Cloud API\SemesterOpdracht\NetCoreAPI\obj\Debug\netcoreapp2.0\aspcore.AssemblyInfo.cs
+d:\School\2017-2018\Cloud API\SemesterOpdracht\NetCoreAPI\obj\Debug\netcoreapp2.0\aspcore.dll
+d:\School\2017-2018\Cloud API\SemesterOpdracht\NetCoreAPI\obj\Debug\netcoreapp2.0\aspcore.pdb
+d:\School\2017-2018\Cloud API\SemesterOpdracht\NetCoreAPI\bin\Debug\netcoreapp2.0\aspcore.deps.json
+d:\School\2017-2018\Cloud API\SemesterOpdracht\NetCoreAPI\bin\Debug\netcoreapp2.0\aspcore.runtimeconfig.json
+d:\School\2017-2018\Cloud API\SemesterOpdracht\NetCoreAPI\bin\Debug\netcoreapp2.0\aspcore.runtimeconfig.dev.json
+d:\School\2017-2018\Cloud API\SemesterOpdracht\NetCoreAPI\bin\Debug\netcoreapp2.0\aspcore.dll
+d:\School\2017-2018\Cloud API\SemesterOpdracht\NetCoreAPI\bin\Debug\netcoreapp2.0\aspcore.pdb

@@ -10,42 +10,36 @@ namespace Model
             //Create the db if not yet exists
             context.Database.EnsureCreated();
             
-            //Are there already books present ?
-            if (!context.Books.Any())
+            //Are there already Songs present ?
+            if (!context.Songs.Any())
             {
-                var suzanne = new Author()
+                var posty = new Artist()
                 {
-                    Name = "Collins",
-                    FirstName = "Suzanne"
+                    Name = "Post Malone"
                 };
-                context.Authors.Add(suzanne);
-                var george = new Author()
+                context.Artists.Add(posty);
+                var ra = new Artist()
                 {
-                    Name = "Orwell",
-                    FirstName = "George"
+                    Name = "Rise Against"
                 };
-                context.Authors.Add(george);
+                context.Artists.Add(ra);
 
-                //Create new book
-                var bk = new Book()
+                //Create new song
+                var sn = new Song()
                 {
-                    Title = "The Hunger Games",
-                    ISBN = "0439023483",
-                    Pages = 374,
-                    Genre = "Adventure",
-                    Author = suzanne
+                    Title = "Rich & Sad",
+                    Genre = "Rap",
+                    Artist = posty
                 };
                 //Add the book to the collection of books
-                context.Books.Add(bk);
-                bk = new Book()
+                context.Songs.Add(sn);
+                sn = new Song()
                 {
-                    Title = "Animal Farm",
-                    ISBN = "0452284244",
-                    Pages = 122,
-                    Genre = "Mystery",
-                    Author = george
+                    Title = "Satellite",
+                    Genre = "Rock",
+                    Artist = ra
                 };
-                context.Books.Add(bk);
+                context.Songs.Add(sn);
                 //Save all the changes to the DB
                 context.SaveChanges();
             }
