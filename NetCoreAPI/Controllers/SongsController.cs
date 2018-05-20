@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Model;
 
 [Route("api/v1/songs")]
-[EnableCors("AllowSpecificOrigin")]
+[EnableCors("AllowAllMethods")]
 public class SongsController : Controller
 {
     private readonly LibraryContext context;
@@ -17,7 +17,7 @@ public class SongsController : Controller
     }
 
     [HttpGet]         // api/v1/songs
-    public List<Song> GetAllSongs(string genre, string title, int? page, string sort, int length = 2, string dir = "asc")
+    public List<Song> GetAllSongs(string genre, string title, int? page, string sort, int length = 0, string dir = "asc")
     {
         IQueryable<Song> query = context.Songs
                             .Include(d => d.Artist);
@@ -48,7 +48,10 @@ public class SongsController : Controller
 
         if (page.HasValue)
             query = query.Skip(page.Value * length);
-        query = query.Take(length);
+        if(length > 0)
+        {
+            query = query.Take(length);
+        }
 
         return query.ToList();
     }
@@ -81,8 +84,9 @@ public class SongsController : Controller
     }
 
     [HttpPost]
+    [EnableCors("AllowAllMethods")]
     public IActionResult CreateSong([FromBody] Song newSong)
-    {
+    {        
         //song toevoegen in de databank, Id wordt dan ook toegekend
         context.Songs.Add(newSong);
         context.SaveChanges();
@@ -99,6 +103,15 @@ public class SongsController : Controller
 
         orgSong.Title = updateSong.Title;
         orgSong.Genre = updateSong.Genre;
+
+        try {
+            var Artist = context.Artists.Find(updateSong.Artist.Id);
+            if (Artist != null) {
+                orgSong.Artist = Artist;
+            }    
+        } catch {
+
+        }        
 
         context.SaveChanges();
         return Ok(orgSong);

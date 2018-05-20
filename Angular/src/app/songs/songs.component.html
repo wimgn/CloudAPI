@@ -1,5 +1,32 @@
-<div class="container" >
+<div class="container" *ngIf="ServiceOutput">
+  <div class="row" >
+    <p>Genre</p>
+  </div>
   <div class="row">
-    
+      <input [ngModel]="genre" (ngModelChange)="Change($event)"/>
+  </div>
+  <br>
+  <div class="row font-weight-bold">
+    <div class="col-4">Song</div>
+    <div class="col-4">Genre</div>
+    <div class="col-4">Artist</div>
+  </div>
+  <div class="row" *ngFor="let song of ServiceOutput" >
+    <div class="col-4" >{{song.title}}</div>
+    <div class="col-4" >{{song.genre}}</div>
+    <div class="col-4" *ngIf="song.artist" >{{song.artist.name}}</div>
+  </div>
+  <div class="row">
+    <div class="col-4 font-weight-bold">
+      <p>Input title</p>
+      <input [(ngModel)]="inputTitle"/>
+    </div>
+    <div class="col-4 font-weight-bold">
+        <p>Input Genre</p>
+        <input [(ngModel)]="inputTitle"/>
+      </div>
+  </div>
+  <div class="row">
+    <button class="btn btn-primary" (click)="postSong($event)">test post</button>
   </div>
 </div>

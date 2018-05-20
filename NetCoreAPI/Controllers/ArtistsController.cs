@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Model;
 
 [Route("api/v1/artists")]
-[EnableCors("AllowSpecificOrigin")]
+[EnableCors("AllowAllMethods")]
 public class ArtistsController : Controller
 {
     private readonly LibraryContext context;

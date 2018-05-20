@@ -36,8 +36,11 @@ namespace aspcore
 
             services.AddMvc();
             services.AddCors(options => {
-                options.AddPolicy("AllowSpecificOrigin",
-                builder => builder.WithOrigins("http://localhost:4200"));
+                options.AddPolicy("AllowAllMethods",
+                builder => {
+                    builder.WithOrigins("http://localhost:4200")
+                        .AllowAnyMethod();
+                });
             });
         }
 
