@@ -14,13 +14,13 @@ public class ArtistsController : Controller
         this.context = context;
     }
 
-    [HttpGet]         // api/v1/books
+    [HttpGet]         // api/v1/artists
     public List<Artist> GetAllAuthors()
     {
         return context.Artists.ToList();
     }
 
-    [Route("{id}")]   // api/v1/Artists/2
+    [Route("{id}")]   // api/v1/artists/2
     [HttpGet]
     public IActionResult GetArtist(int id)
     {
@@ -31,7 +31,7 @@ public class ArtistsController : Controller
         return Ok(artist);
     }
 
-    [Route("{id}/songs")]   // api/v1/songs/2
+    [Route("{id}/songs")]   // api/v1/artists/2/songs
     [HttpGet]
     public IActionResult GetSongsForArtist(int id)
     {
@@ -76,7 +76,7 @@ public class ArtistsController : Controller
         if (author == null)
             return NotFound();
 
-        //book verwijderen ..
+        //Artist verwijderen ..
         context.Artists.Remove(author);
         context.SaveChanges();
         //Standaard response 204 bij een gelukte delete

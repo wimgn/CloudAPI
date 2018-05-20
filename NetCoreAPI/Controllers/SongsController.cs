@@ -17,7 +17,8 @@ public class SongsController : Controller
     [HttpGet]         // api/v1/songs
     public List<Song> GetAllSongs(string genre, string title, int? page, string sort, int length = 2, string dir = "asc")
     {
-        IQueryable<Song> query = context.Songs;
+        IQueryable<Song> query = context.Songs
+                            .Include(d => d.Artist);
 
         if (!string.IsNullOrWhiteSpace(genre))
             query = query.Where(d => d.Genre == genre);

@@ -7,8 +7,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './pokemonDetail/detail.component';
 import { TypeComponent } from './type/type.component';
+import { SongsComponent } from './songs/songs.component'
 
 import { PokeAPIService } from './service/PokeAPI.service';
+import { EigenAPIService } from './service/EigenAPI.service';
 
 import { FormsModule } from '@angular/forms';
 
@@ -25,7 +27,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NavBarComponent,
     PageNotFoundComponent,
     DetailComponent,
-    TypeComponent
+    TypeComponent,
+    SongsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       { path: 'home', component: HomeComponent},
       { path: 'pokemon/:id', component: DetailComponent},
       { path: 'type/:id', component: TypeComponent},
+      { path: 'songs', component: SongsComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: "**", component: PageNotFoundComponent}
     ], { useHash: true }),
@@ -43,7 +47,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
     HttpClient,
-    PokeAPIService
+    PokeAPIService,
+    EigenAPIService
   ],
   bootstrap: [AppComponent]
 })
