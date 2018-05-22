@@ -18,6 +18,9 @@ export class SongsComponent implements OnInit {
   id: number;
   private sub: any;
   genre : string;
+  inputGenre : string;
+  inputTitle : string;
+
 
   ngOnInit() {
 
@@ -40,8 +43,8 @@ export class SongsComponent implements OnInit {
 
   postSong(event){
     console.log(1);
-    this._svc.PostSong({title: "test", genre: "test"})
-        .subscribe(hero => console.log(hero));
+    this._svc.PostSong({title: this.inputTitle, genre: this.inputGenre})
+        .subscribe(song => console.log(song));
     console.log(2);
   }
 

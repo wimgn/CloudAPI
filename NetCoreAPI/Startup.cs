@@ -39,7 +39,8 @@ namespace aspcore
                 options.AddPolicy("AllowAllMethods",
                 builder => {
                     builder.WithOrigins("http://localhost:4200")
-                        .AllowAnyMethod();
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
                 });
             });
         }
